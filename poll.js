@@ -76,7 +76,7 @@ class Poll {
 
     const embed = new Discord.MessageEmbed(message.embeds[0]);
     embed
-      .setColor("FF0800")
+      .setColor("#9A1D22")
       .setAuthor(`${this.ques} [FINISHED]`)
       .setFooter(`Poll ${this.id} finished ${now.toUTCString()}`);
 
@@ -127,7 +127,7 @@ class Poll {
       ).toUTCString()}`;
 
     let embed = new Discord.MessageEmbed()
-      .setColor("#50C878")
+      .setColor("#9A1D22")
       .setAuthor("📊" + this.question)
       .setDescription(str)
       .setFooter(footer);
@@ -174,7 +174,7 @@ class Poll {
       .setAuthor("Results of: " + this.question)
       .setDescription(description)
       .setFooter(footer)
-      .setColor("#0080FF");
+      .setColor("#9A1D22");
 
     return resultsEmbed;
   }

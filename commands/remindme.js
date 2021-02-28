@@ -7,7 +7,7 @@ module.exports = {
       const helpEmbed = new Discord.MessageEmbed()
         .setColor("#9A1D22")
         .setTitle("Remindme Help Guide")
-        .setAuthor("StudyBot")
+        .setAuthor("StudBot")
         .setDescription(
           "How to Use this Command: \n" +
             "Command Syntax: !remindme assignmentName dueDate specific@ \n" +
@@ -36,18 +36,6 @@ module.exports = {
           var atString = ` ${msg.author} Reminder set for `;
         } else if (specificAt.toString() === "everyone") {
           atString = "@everyone Reminder set for ";
-        }
-        if (assignmentName.includes("help")) {
-          msg.channel.send(
-            "How to Use this Command: \n" +
-              "Command Syntax: !remindme assignmentName dueDate specific@ \n" +
-              "Example Command: !remindme csHomework3 March 4 2021 user \n" +
-              "Example Assignment Name: csHomework2 \n" +
-              "Example Due Date: July 4 1776 \n" +
-              "specific@: user or everyone \n" +
-              "If you need to check a due date for an assingment use !remindme check assignmentName \n" +
-              "If you need to list out all the assignments and their due dates use !remindme list"
-          );
         } else if (
           !assignmentName.includes("check") &&
           !assignmentName.includes("list")
@@ -62,23 +50,28 @@ module.exports = {
             remindDates.push({ name: name1, due: time1 });
             return remindDates;
           }
-          msg.channel.send(
-            atString +
-              assignmentName +
-              " on " +
-              dueMonth +
-              " " +
-              dueDay +
-              " " +
-              dueYear
-          );
+          const resultEmbed = new Discord.MessageEmbed()
+            .setColor("#9A1D22")
+            .setTitle("Reminder!")
+            .setAuthor("StudBot")
+            .setDescription(
+              atString +
+                assignmentName +
+                " on " +
+                dueMonth +
+                " " +
+                dueDay +
+                " " +
+                dueYear
+            );
+          msg.channel.send(resultEmbed);
           var hasRun = true;
           var intervalID = setInterval(() => {
             if (hasRun) {
               const resultEmbed = new Discord.MessageEmbed()
                 .setColor("#9A1D22")
                 .setTitle("Reminder!")
-                .setAuthor("StudyBot")
+                .setAuthor("StudBot")
                 .setDescription(
                   atString + " " + assignmentName + " is due Tonight!"
                 );
@@ -96,7 +89,7 @@ module.exports = {
           const resultEmbed = new Discord.MessageEmbed()
             .setColor("#9A1D22")
             .setTitle("Reminder!")
-            .setAuthor("StudyBot")
+            .setAuthor("StudBot")
             .setDescription(
               returnedDate[0].name + " is due " + returnedDate[0].due
             );
@@ -106,7 +99,7 @@ module.exports = {
             const resultEmbed = new Discord.MessageEmbed()
               .setColor("#9A1D22")
               .setTitle("Reminder!")
-              .setAuthor("StudyBot")
+              .setAuthor("StudBot")
               .setDescription(element.name + " " + element.due);
             msg.channel.send(resultEmbed);
           });

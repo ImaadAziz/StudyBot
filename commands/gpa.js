@@ -9,7 +9,7 @@ module.exports = {
       const helpEmbed = new Discord.MessageEmbed()
         .setColor("#9A1D22")
         .setTitle("GPA Help Guide")
-        .setAuthor("StudyBot")
+        .setAuthor("StudBot")
         .setDescription(
           "This command calculates your given gpa for the amount of classes you are taking this semester.\n\nCall !gpa [numClasses] where numClasses is your number of classes for the given semester.(Default = 5)\n\nThe bot will then ask you to enter a letter grade for each class.\nThen the calculated GPA is printed.\nExamples:  !gpa 5"
         );
@@ -56,7 +56,7 @@ module.exports = {
           const resultEmbed = new Discord.MessageEmbed()
             .setColor("#9A1D22")
             .setTitle("Calculated GPA")
-            .setAuthor("StudyBot")
+            .setAuthor("StudBot")
             .setDescription(
               `Your calculated GPA is ${(result / creditSum).toFixed(2)}`
             );

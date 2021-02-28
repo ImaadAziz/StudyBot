@@ -1,14 +1,14 @@
 const Discord = require("discord.js");
 
 module.exports = {
-  name: "grade-predict",
-  description: "grade Predict",
+  name: "predict",
+  description: "predict",
   execute(message, arg) {
     if (arg[0] == "help") {
       const helpEmbed = new Discord.MessageEmbed()
         .setColor("#9A1D22")
         .setTitle("Grade-predict Help Guide")
-        .setAuthor("StudyBot")
+        .setAuthor("StudBot")
         .setDescription(
           "This command calculates the amount of points you would get given a weight and an amount of assignments\n\nCall !grade-predict [weight] [assignments] where weight is the weight of the assignments and assignments is the number of assignments.\n\n After call, the bot will then ask for you grades on these assignments and return your points\nExamples:  !grade-predict 60 3, !grade-predict 20 5"
         );
@@ -38,7 +38,7 @@ module.exports = {
           const resultEmbed = new Discord.MessageEmbed()
             .setColor("#9A1D22")
             .setTitle("Grade Prediction")
-            .setAuthor("StudyBot")
+            .setAuthor("StudBot")
             .setDescription(
               `You will be getting ${points.toFixed(2)}% out of ${weight}%`
             );

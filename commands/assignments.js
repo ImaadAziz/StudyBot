@@ -22,7 +22,7 @@ module.exports = {
       const resultEmbed = new Discord.MessageEmbed()
         .setColor("#9A1D22")
         .setTitle("Week Assignments")
-        .setAuthor("StudyBot")
+        .setAuthor("StudBot")
         .setDescription(
           weekAssignments.map((assignment) => {
             return assignment + ", ";
@@ -34,7 +34,7 @@ module.exports = {
       const resultEmbed = new Discord.MessageEmbed()
         .setColor("#9A1D22")
         .setTitle("Month Assignments")
-        .setAuthor("StudyBot")
+        .setAuthor("StudBot")
         .setDescription(
           monthAssignments.map((assignment) => {
             return assignment + ", ";

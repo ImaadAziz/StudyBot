@@ -41,7 +41,7 @@ const examplesEmbed = new Discord.MessageEmbed()
   )
   .addField("Timed poll", `\`${config.prefix} time=5m "This is a poll?"\``)
   .addField("End Poll / View Results", `\`${config.prefix} end 89754398\``)
-  .setColor("#DDA0DD");
+  .setColor("#9A1D22");
 
 let database = new Datastore("database.db");
 database.loadDatabase();
