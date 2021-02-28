@@ -209,16 +209,18 @@ client.on("ready", () => {
 
 client.on("message", async (message) => {
   if (message.author.bot) return;
-  if (message.content.startsWith(PREFIX)) {
+  if (message.content.startsWith(prefix)) {
     const [CMD_NAME, ...args] = message.content
       .trim()
-      .substring(PREFIX.length)
+      .substring(prefix.length)
       .split(/\s+/);
     if (CMD_NAME === "kick") {
       if (!message.member.hasPermission("KICK_MEMBERS"))
         return message.reply("You cannot use that command");
       if (args.length === 0) return message.reply("Please prove user ID");
-      const member = message.guild.members.cache.get(args[0]);
+      console.log("error is here");
+      const member = message.guild.members.fetch(args[0]);
+      console.log(member);
       if (member) {
         member
           .kick()

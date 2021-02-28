@@ -1,17 +1,35 @@
 module.exports = {
-  name: "gpa-calc",
+  name: "gpa",
   description:
     "!gpa [numClasses]: Asks you your letter grade for the number of classes and calculates GPA.",
   execute(message, arg) {
     if (arg[0] == "help") {
-      message.channel.send(this.description);
+      const helpEmbed = new Discord.MessageEmbed()
+        .setAuthor("GPA Help List")
+        .addField("Calculate a students semester GPA")
+        .addField(
+          "Call !gpa [numClasses] with numClasses being the number of classes you are taking this semester"
+        )
+        .addField(
+          "Create a Timed Poll",
+          `\`time=X(s|m|h|d)\` (X is the amount of time followed with the unit of time)`
+        )
+        .addField(
+          "End a Poll and View Results",
+          `\`end ID\` (ID is displayed on the poll)`
+        )
+        .addField("See examples", `\` examples\``)
+        //.addBlankField()
+        .setColor("#DDA0DD");
+
+      message.channel.send(helpEmbed);
     } else {
       const filter = (m) => m.author.id === message.author.id;
       const classes = arg[0] == null ? 5 : args[0];
       const credits = [3, 3, 1, 4, 2]; // would orginally get from blackboard
       const grades = [];
       let counter = 0;
-      message.author.send("What are your letter grades for these classes? ");
+      message.channel.send("What are your letter grades for these classes? ");
       message.channel
         .awaitMessages(filter, {
           max: classes,
@@ -43,7 +61,7 @@ module.exports = {
           const creditSum = credits.reduce((a, b) => a + b, 0);
           console.log(creditSum);
           //gpa = result / creditSum;
-          message.author.send(
+          message.channel.send(
             `Your calculated GPA is ${(result / creditSum).toFixed(2)}`
           );
         })
