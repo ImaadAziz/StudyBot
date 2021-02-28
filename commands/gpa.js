@@ -1,3 +1,5 @@
+const Discord = require("discord.js");
+
 module.exports = {
   name: "gpa",
   description:
@@ -5,27 +7,17 @@ module.exports = {
   execute(message, arg) {
     if (arg[0] == "help") {
       const helpEmbed = new Discord.MessageEmbed()
-        .setAuthor("GPA Help List")
-        .addField("Calculate a students semester GPA")
-        .addField(
-          "Call !gpa [numClasses] with numClasses being the number of classes you are taking this semester"
-        )
-        .addField(
-          "Create a Timed Poll",
-          `\`time=X(s|m|h|d)\` (X is the amount of time followed with the unit of time)`
-        )
-        .addField(
-          "End a Poll and View Results",
-          `\`end ID\` (ID is displayed on the poll)`
-        )
-        .addField("See examples", `\` examples\``)
-        //.addBlankField()
-        .setColor("#DDA0DD");
+        .setColor("#9A1D22")
+        .setTitle("GPA Help Guide")
+        .setAuthor("StudyBot")
+        .setDescription(
+          "This command calculates your given gpa for the amount of classes you are taking this semester.\n\nCall !gpa [numClasses] where numClasses is your number of classes for the given semester.(Default = 5)\n\nThe bot will then ask you to enter a letter grade for each class.\nThen the calculated GPA is printed.\nExamples:  !gpa 5"
+        );
 
       message.channel.send(helpEmbed);
     } else {
       const filter = (m) => m.author.id === message.author.id;
-      const classes = arg[0] == null ? 5 : args[0];
+      const classes = arg[0] == null ? 5 : arg[0];
       const credits = [3, 3, 1, 4, 2]; // would orginally get from blackboard
       const grades = [];
       let counter = 0;
@@ -61,9 +53,14 @@ module.exports = {
           const creditSum = credits.reduce((a, b) => a + b, 0);
           console.log(creditSum);
           //gpa = result / creditSum;
-          message.channel.send(
-            `Your calculated GPA is ${(result / creditSum).toFixed(2)}`
-          );
+          const resultEmbed = new Discord.MessageEmbed()
+            .setColor("#9A1D22")
+            .setTitle("Calculated GPA")
+            .setAuthor("StudyBot")
+            .setDescription(
+              `Your calculated GPA is ${(result / creditSum).toFixed(2)}`
+            );
+          message.channel.send(resultEmbed);
         })
         .catch((err) => console.log(err));
     }
