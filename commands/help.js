@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports = {
-  name: "commands",
+  name: "help",
   description: "",
   execute(message, arg) {
     const helpEmbed = new Discord.MessageEmbed()
@@ -9,7 +9,7 @@ module.exports = {
       .setTitle("Commands:")
       .setAuthor("StudBot")
       .setDescription(
-        "!help Gives a description on the bot and can be run on any command\n\n!assignments [week/month]\n\n!gpa [classess]\n\n!predict [weight] [assignments]\n\n!remindme (has multiple parameters)\n\n!poll (has multiple parameters)\n\n!flip Flips a coin"
+        "Hi! My names StudBot I'm here to help you with schoolwork and want you to succeed! Call !commands to see what I can do."
       );
 
     message.channel.send(helpEmbed);
